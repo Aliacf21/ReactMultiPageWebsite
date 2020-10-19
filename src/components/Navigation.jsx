@@ -7,7 +7,7 @@ function Navigation(props) {
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <Link class="navbar-brand" to="/">
-            React Multi-Page Website
+            Bun-Bun Bake Shop
           </Link>
           <button
             class="navbar-toggler"
@@ -38,7 +38,7 @@ function Navigation(props) {
                 }`}
               >
                 <Link class="nav-link" to="/about">
-                  About
+                  Products
                 </Link>
               </li>
               <li
@@ -47,7 +47,7 @@ function Navigation(props) {
                 }`}
               >
                 <Link class="nav-link" to="/contact">
-                  Contact
+                  Shopping Cart
                 </Link>
               </li>
             </ul>

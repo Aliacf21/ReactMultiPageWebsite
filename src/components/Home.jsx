@@ -5,14 +5,16 @@ function Home() {
     <div className="home">
       <div class="container">
         <div class="row align-items-center my-5">
-          <div class="col-lg-7">
+          <div class="col-12">
             <img
-              class="img-fluid rounded mb-4 mb-lg-0"
-              src="http://placehold.it/900x400"
+              class="img-fluid rounded mb-5 mb-lg-0"
+              src="http://placehold.it/2000x600"
               alt=""
             />
           </div>
-          <div class="col-lg-5">
+          </div>
+          <div class="row align-items-center my-5">
+          <div class="col-12">
             <h1 class="font-weight-light">Home</h1>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -21,9 +23,10 @@ function Home() {
               type and scrambled it to make a type specimen book.
             </p>
           </div>
+          </div>
         </div>
       </div>
-    </div>
+
   );
 }
 
