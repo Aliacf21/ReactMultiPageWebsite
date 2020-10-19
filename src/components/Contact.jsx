@@ -1,29 +1,52 @@
 import React from "react";
+import { Card, Button } from "react-bootstrap";
+
+const MyCard = ({title, text}) => (
+    <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src="https://www.chowstatic.com/blog-media/2014/12/sandhiracinnamon-roll13859833365480.jpg" />
+              <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>
+                  {text}
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>)
 
 function Contact() {
   return (
     <div className="contact">
       <div class="container">
-        <div class="row align-items-center my-5">
-          <div class="col-lg-7">
-            <img
-              class="img-fluid rounded mb-4 mb-lg-0"
-              src="http://placehold.it/900x400"
-              alt=""
-            />
+
+        <div class="row align-items-center my-5">    
+          <div class="col-lg-4">
+            <MyCard title={"AJ is great"} text={"Alia ... :/"}/>
           </div>
-          <div class="col-lg-5">
-            <h1 class="font-weight-light">Contact</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </p>
+          <div class="col-lg-4">
+            <MyCard title={"AJ is great"} text={"Alia ... :/"}/>
+          </div>
+          <div class="col-lg-4">
+            <MyCard title={"AJ is great"} text={"Alia ... :/"}/>
           </div>
         </div>
+       
+
+        <div class="row align-items-center my-5">    
+          <div class="col-lg-4">
+            <MyCard title={"AJ is great"} text={"Alia ... :/"}/>
+          </div>
+          <div class="col-lg-4">
+            <MyCard title={"AJ is great"} text={"Alia ... :/"}/>
+          </div>
+          <div class="col-lg-4">
+            <MyCard title={"AJ is great"} text={"Alia ... :/"}/>
+          </div>
+        </div>
+
+        <div class="row align-items-center my-5"></div> 
+        
+        </div>
       </div>
-    </div>
   );
 }
 
