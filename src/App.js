@@ -7,7 +7,7 @@ function App() {
       <Router>
         <Navigation />
         <Switch>
-          <Route path="/" exact component={() => <Home />} />
+          <Route path="https://aliacf21.github.io/ReactMultiPageWebsite/index.html/" exact component={() => <Home />} />
           <Route path="/about" exact component={() => <About />} />
           <Route path="/contact" exact component={() => <Contact />} />
          <Route path="/original" exact component={() => <Original />} />
