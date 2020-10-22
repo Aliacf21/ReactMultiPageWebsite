@@ -7,10 +7,10 @@ function App() {
       <Router>
         <Navigation />
         <Switch>
-          <Route path="/" exact component={() => <Home />} />
-          <Route path="/about" exact component={() => <About />} />
-          <Route path="/contact" exact component={() => <Contact />} />
-         <Route path="/original" exact component={() => <Original />} />
+          <Route path="ReactMultiPageWebsite/" exact component={() => <Home />} />
+          <Route path="ReactMultiPageWebsite/about" exact component={() => <About />} />
+          <Route path="ReactMultiPageWebsite/contact" exact component={() => <Contact />} />
+         <Route path="ReactMultiPageWebsite/original" exact component={() => <Original />} />
         </Switch>
       </Router>
     </div>
