@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 
+
+
 const MyCard = ({title, text}) => (
     <Card style={{ width: '18rem' }}>
               <Card.Img variant="top" src="https://www.chowstatic.com/blog-media/2014/12/sandhiracinnamon-roll13859833365480.jpg" />
