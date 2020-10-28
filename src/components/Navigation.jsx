@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Card, Button, Modal, ButtonGroup, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
+import "./nav.css";
 
 
  const default_todoList = [
@@ -68,8 +69,8 @@ let itemsInList = todoList.length
               >
   
                 <Link class="nav-link" to="/contact" style={{color: "white"}}>
-                  Shopping Cart  {itemsInList}
-                 
+                  Shopping Cart   <span class="dot" style={{textAlign:"center"}}>{itemsInList}</span>
+
                 </Link>
  
                 

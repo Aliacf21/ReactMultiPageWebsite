@@ -116,8 +116,8 @@ class About extends Component {
 
   const MyCard = ({title, text, price, link}) => {
     return (
-      <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '36rem' }}>
-        <Card.Img style={{ height: '28rem' }} variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" />
+      <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '32rem' }}>
+        <Card.Img style={{ height: '24rem' }} variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" />
           <div class="card-body">
               <div class="row align-items-center">  
                 <div class="col-lg-10 align-items-center"><MyModal title ={title} price={price}/></div>
@@ -139,7 +139,7 @@ class About extends Component {
         if (title == "Quantity") {
         customerChoiceForQuantity = someValue;
         console.log("Quantity: " + customerChoiceForQuantity)
-        document.getElementById("currentQuatity").innerHTML = customerChoiceForQuantity;
+        document.getElementById("currentQuatity").innerHTML = "x" + customerChoiceForQuantity;
 
       }
       else {
@@ -211,7 +211,7 @@ class About extends Component {
               </div>
 
             <div class="col-lg-6">
-                <Button  size="sm" id="currentQuatity" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={customerChoiceForQuantity}>{customerChoiceForQuantity}</Button>
+                <Button  size="sm" id="currentQuatity" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={customerChoiceForQuantity}>x{customerChoiceForQuantity}</Button>
             </div>
           </div>
 

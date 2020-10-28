@@ -140,6 +140,7 @@ class Contact extends Component {
     todoList.splice(i,1)
     this.setState({ todoList: todoList });
     store(todoList)
+    window.location.reload(true);
   };
 
 
