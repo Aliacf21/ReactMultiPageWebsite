@@ -20,7 +20,7 @@ function Example({title}) {
   const handleShow = () => setShow(true);
 
   return (
-    <>
+    <div>
       <Button onClick={handleShow} variant="light" size="lg" style={{backgroundColor: "white", color:"black", padding: 0}}><u>{title}</u></Button>
 
       <Modal show={show} onHide={handleClose} animation={true}  size="lg"
@@ -106,7 +106,7 @@ function Example({title}) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }
 
@@ -152,17 +152,15 @@ render() {
     for (let i = 0; i < this.state.todoList.length; i++) {
       let todo = this.state.todoList[i];
       list_content.push(
-        <li
-          key={todo.content + "_" + i.toString()}
-          onClick={(evt) => this.toggleDone(evt, i)}
-        >
-          {todo.content}
-          {/* Comment: Below the "Done!" icon is conditionally rendered */}
-          {todo.finished && <div className="DoneIcon">Done!</div>}
+        <li>
+          FoodType: {todo.foodType} <br></br>
+          Glazing: {todo.glazing} <br></br>
+          Quantity: {todo.quantity} <br></br>
+          Total: {todo.total} <br></br>
           <div className="Filler"></div>
-          <div className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}>
+          <button className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}>
             {"x"}
-          </div>
+          </button>
         </li>
       );
       console.log(todo);
@@ -172,20 +170,7 @@ render() {
     return (
       <div className="App">
         <div className="Header">
-        <Example title={'hi'}/>
-          <h2>Simple To Do</h2>
-          <input
-            type="text"
-            value={this.state.newTodoContent}
-            onChange={(evt) => {
-              console.log(evt.target.value);
-              this.setState({ newTodoContent: evt.target.value });
-            }}
-            placeholder="new to do...."
-          />
-          <span onClick={() => this.addItem()} className="AddNewToDoButton">
-            Add
-          </span>
+          <h5>Checkout Items</h5>
         </div>
         <ul>{list_content}</ul>
       </div>

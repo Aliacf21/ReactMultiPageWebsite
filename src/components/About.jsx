@@ -4,11 +4,6 @@ import { Card, Button, Modal, ButtonGroup, ToggleButtonGroup, ToggleButton } fro
 
 
  const default_todoList = [
-    {
-     typeOfFood: "Original",
-      Glazing: false,
-      Quantity: 0
-    }
 ];
 
 function load(){
@@ -39,12 +34,14 @@ class About extends Component {
     this.setState({ todoList: todoList });
     store(todoList)
   };
-  addItem = (myString) => {
+  addItem = (foodType, myGlazing, quantity, price) => {
     //TODO 1: Make the add button work (hint: this.setState())
     let todoList = this.state.todoList;
-    todoList.push({typeOfFood: myString, Glazing:false, Quantity:0})
+    var myTotal = price * quantity;
+    todoList.push({foodType: foodType, glazing:myGlazing, quantity:quantity, total:myTotal})
     this.setState({ todoList: todoList });
     store(todoList)
+    window.location.reload(true);
   };
   deleteItem = (event, i) => {
     //TODO 2: Make the delete button work (hint: event.stopPropagation())
@@ -66,28 +63,6 @@ class About extends Component {
   let row2Names = ["Walnut", "Pecan", "Pumpkin Spice"];
   let row1 = [];
   let row2 = [];
-  let myGlazig = "None";
-
-
-
-  /*for (let name of row1Names) {
-    row1.push(
-        <div class="col-lg-4">
-          <MyCard title={name} price={"$1"}/>
-        </div>
-        );
-      }
-
-  for (let name of row2Names) {
-    row2.push(
-        <div class="col-lg-4">
-          <MyCard title={name} price={"$1"}/>
-        </div>
-        );
-      }
-
-    */
- 
 
 
   let customerChoiceForQuantity = "1";
@@ -100,11 +75,13 @@ class About extends Component {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const customerChoice = []
-    var test = { "name": 0};
+ 
+
 
     return (
       <div>
-        <Button onClick={handleShow} variant="light" size="lg" style={{backgroundColor: "white", color:"black", padding: 0}}><u>{title}</u></Button> 
+        <Button onClick={handleShow} variant="light" size="lg" style={{backgroundColor: "white", color:"black", padding: 0, textDecoration: "none"}}><u>{title}</u></Button> 
+
          <Modal show={show} onHide={handleClose} backdrop="static"  animation={true}  size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
            <Modal.Header closeButton style={{backgroundColor: "orange", color: "white", fontSize: "large"}}>
             <Modal.Title>{title}</Modal.Title>
@@ -117,7 +94,7 @@ class About extends Component {
             </div>
 
             <div class="col-lg-5">
-              <ButtonType title={"Glazing"} num = {test} button1 = {"None"} button2 = {"Vanilla-Milk"} button3 = {"Sugar-Milk"} button4={"Double"} price={price}/>
+              <ButtonType title={"Glazing"}  button1 = {"None"} button2 = {"Vanilla-Milk"} button3 = {"Sugar-Milk"} button4={"Double"} price={price}/>
               <ButtonType title={"Quantity"} button1 = {"1"} button2 = {"2"} button3 = {"6"} button4={"12"} price={price}/>
 
               <ButtonType1 title={"Order"} button1 = {"1"} button2 = {"2"} button3 = {"6"} button4={"12"} price={price}/>
@@ -128,7 +105,7 @@ class About extends Component {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="link" style={{color: "black"}} onClick={handleClose}> Continue Browsing </Button>
-          <Button variant="outline-light" style={{color: "white", backgroundColor: "orange"}} onClick={handleClose}> Add to Cart </Button>
+          <Button variant="outline-light" style={{color: "white", backgroundColor: "orange"}} onClick={() => this.addItem(title, customerChoiceForGlazing, customerChoiceForQuantity, price)}> Add to Cart </Button>
         </Modal.Footer>
       </Modal>
     </div>
@@ -156,9 +133,7 @@ class About extends Component {
       </div>);
   }
 
-  const ButtonType = ({title, num, button1, button2, button3, button4, price}) => { 
-
-
+  const ButtonType = ({title, button1, button2, button3, button4, price}) => { 
 
        const updateValue = (someValue) => {
         if (title == "Quantity") {
@@ -213,7 +188,7 @@ class About extends Component {
 
 
 
-  const ButtonType1 = ({title, num, button1, button2, button3, button4, price}) => { 
+  const ButtonType1 = ({title, button1, button2, button3, button4, price}) => { 
    
     return (
     <div class="row">
@@ -258,70 +233,60 @@ class About extends Component {
 
 
 
+    
+
+     for (let name of row1Names) {
     row1.push(
-      <div class="col-lg-4">
-        <MyCard title={"Original"} price={1}/>
-      </div>
-    )
+        <div class="col-lg-4">
+          <MyCard title={name} price={"1"}/>
+        </div>
+        );
+      }
+
+  for (let name of row2Names) {
+    row2.push(
+        <div class="col-lg-4">
+          <MyCard title={name} price={"1"}/>
+        </div>
+        );
+      }
+
+  
 
 
     let list_content = [];
 
-    for (let i = 0; i < this.state.todoList.length; i++) {
-      let todo = this.state.todoList[i];
-      console.log("This is the value:" + todo.typeOfFood);
-      list_content.push(
-        <li
-          key={todo.typeOfFood + "_" + i.toString()}
-          onClick={(evt) => this.toggleDone(evt, i)}>
-          {todo.typeOfFood}
-          {todo.Glazing}
-          {todo.Quantity}
-          <div className="Filler"></div>
-          <div className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}>
-            {"x"}
-          </div>
-        </li>
-        
-      );
-      
-    }
+
+
+    console.log(this.state.todoList)
 
   return (
     <div className="about">
       <div class="container">
          <div className="contact">
 
-      <div class="container">
+            <div class="container">
       
-        <div class="row align-items-center my-4">    
-           {row1}
-        </div>
-        
-         <div class="row align-items-center my-4">    
-           {row2}
-          </div>
+              <div class="row align-items-center my-4">    
+                 {row1}
+              </div>
+              
+               <div class="row align-items-center my-4">    
+                 {row2}
+                </div>
 
         <div class="row align-items-center my-5"></div> 
-        
-      <input
-            type="text"
-            value={this.state.newTodoContent}
-            onChange={(evt) => {
-              console.log(evt.target.value);
-              this.setState({ newTodoContent: evt.target.value });
-            }}
-            placeholder="new to do...."
-          />
-          <span onClick={() => this.addItem("derp")} className="AddNewToDoButton">
-            Add
-          </span>
+
         </div>
-        <ul>{list_content}</ul>
-      </div>
-    </div>
 
     </div>
+
+   </div>
+
+    </div>
+
+
+
 
   );
 }
