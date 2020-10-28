@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
+
+
 function Navigation(props) {
   return (
     <div className="navigation">
@@ -27,7 +29,7 @@ function Navigation(props) {
                   props.location.pathname === "/about" ? "active" : ""
                 }`}
               >
-                <Link class="nav-link" to="/about" style={{color: "white"}}>
+                <Link  class="nav-link" to="/about" style={{color: "white"}}>
                   Products
                 </Link>
               </li>
@@ -40,6 +42,7 @@ function Navigation(props) {
                   Shopping Cart
                 </Link>
               </li>
+
             </ul>
           </div>
         </div>
