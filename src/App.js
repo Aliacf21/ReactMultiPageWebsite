@@ -2,35 +2,48 @@ import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Navigation, Footer, Home, About, Contact } from "./components";
 
+const default_count = 1
 
+function load(){
+  let count = localStorage.getItem('count')
+  //Using && to condition on str_todos else null
+  return (count && JSON.parse(count)) 
+}
+
+function store(count){
+  localStorage.setItem('count',JSON.stringify(count))
+}
 
 
 class App extends Component {
 
-/*constructor(props) {
-    super(props)
-    this.state = {count: 0}
-};*/
-
   state = {
-    count : 0
+    count: default_count || load()
   };
+
+ componentDidMount() {
+    let loaded_count = load()
+     this.setState(
+    //Using || backup assignment
+    {todoList: loaded_count || default_count
+    }
+  );
+    }
 
 incrementCount = () => {
   this.setState((state) => {
-    // Important: read `state` instead of `this.state` when updating.
-    console.log(state.count)
-    return {count: state.count + 1}
+    return {count: (this.count + 1)}
   });
+
 }
 
 decrementCount = () => {
+  let defualt_count = load()
   this.setState((state) => {
-    // Important: read `state` instead of `this.state` when updating.
-    console.log(state.count)
-    return {count: state.count - 1}
+    return {count: this.count - 1}
   });
 }
+
 
 //this.incrementCount();
 

@@ -40,11 +40,11 @@ class About extends Component {
     this.setState({ todoList: todoList });
     store(todoList)
   };
-  addItem = (foodType, myGlazing, quantity, price) => {
+  addItem = (foodType, myGlazing, quantity, price, image) => {
     //TODO 1: Make the add button work (hint: this.setState())
     let todoList = this.state.todoList;
     var myTotal = price * quantity;
-    todoList.push({foodType: foodType, glazing:myGlazing, quantity:quantity, total:myTotal})
+    todoList.push({foodType: foodType, glazing:myGlazing, quantity:quantity, total:myTotal, image: image})
     this.setState({ todoList: todoList });
     store(todoList)
     //pass some call back as a prop 
@@ -70,8 +70,14 @@ class About extends Component {
 
   {
 
-  let row1Names = [{type: "Original", price: 1}, {type: "Original; Gluten-Free", price: 2}, {type: "Blackberry", price: 1.5}];
-  let row2Names = [{type: "Walnut", price: 3}, {type: "Pecan", price: 2}, {type: "Pumpkin Spice", price: 1}];
+  let row1Names = [
+  {type: "Original", price: 1, image: "https://www.faithfullyglutenfree.com/wp-content/uploads/2011/01/Cinnamon-Buns-2181483.jpg"}, 
+  {type: "Original; Gluten-Free", price: 2, image: "https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg"},
+   {type: "Blackberry", price: 1.5, image: "https://kristineskitchenblog.com/wp-content/uploads/2018/05/blackberry-pie-700-0066.jpg"}];
+  let row2Names = [
+  {type: "Walnut", price: 3, image: "https://www.bearnakedfood.com/wp-content/uploads/2018/05/DSCF1980-800x1200.jpg"}, 
+  {type: "Pecan", price: 2, image: "https://images.ctfassets.net/uw7yiu2kuigc/4BjBKP0HEN9htyhktAiWa0/8e9fa4d10df96a36525af327c243b65d/Classic-Pecan-Pie-Lead.jpg"}, 
+  {type: "Pumpkin Spice", price: 1, image: "https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg"}];
   let row1 = [];
   let row2 = [];
 
@@ -81,7 +87,7 @@ class About extends Component {
 
 
 
-  const MyModal = ({title, price}) => { 
+  const MyModal = ({title, price, image}) => { 
     const [show, setShow] = React.useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -101,12 +107,13 @@ class About extends Component {
            <div class="row"> 
 
             <div class="col-lg-7">
-              <Card.Img style={{ height: '28rem' }} variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" />
+              <Card.Img style={{ height: '28rem' }} variant="top" src={image}/>
             </div>
 
             <div class="col-lg-5">
               <ButtonType title={"Glazing"}  button1 = {"None"} button2 = {"Vanilla-Milk"} button3 = {"Sugar-Milk"} button4={"Double"} price={price}/>
               <ButtonType title={"Quantity"} button1 = {"1"} button2 = {"2"} button3 = {"6"} button4={"12"} price={price}/>
+
 
               <ButtonType1 title={"Order"} button1 = {"1"} button2 = {"2"} button3 = {"6"} button4={"12"} price={price}/>
             </div>
@@ -116,7 +123,7 @@ class About extends Component {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="link" style={{color: "black"}} onClick={handleClose}> Continue Browsing </Button>
-          <Button variant="outline-light" style={{color: "white", backgroundColor: "orange"}} onClick={() => this.addItem(title, customerChoiceForGlazing, customerChoiceForQuantity, price)}> Add to Cart </Button>
+          <Button variant="outline-light" style={{color: "white", backgroundColor: "orange"}} onClick={() => this.addItem(title, customerChoiceForGlazing, customerChoiceForQuantity, price, image)}> Add to Cart </Button>
         </Modal.Footer>
       </Modal>
     </div>
@@ -132,14 +139,14 @@ return (
   </div>);
   }
 
-  const MyCard = ({title, text, price, link}) => {
+  const MyCard = ({title, text, price, link, image}) => {
     return (
       <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '32rem' }}>
-        <Card.Img style={{ height: '24rem' }}  onClick= {() => openModal(title, price)} src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" />
+        <Card.Img style={{ height: '24rem' }}  onClick= {() => openModal(title, price)} src={image} />
           <div class="card-body">   
               <div class="row">  
                 <div class="col-lg-9 text-left">
-                  <MyModal title ={title} price={price}/>
+                  <MyModal title ={title} price={price} image={image}/>
                 </div>
                 <div class="col-lg-3 text-right">  
                   <Card.Title style={{marginTop: "5px"}}>${price}</Card.Title>
@@ -173,7 +180,7 @@ return (
 
    
     return (
-    <div class="row">
+    <div class="row" style={{marginBottom: "20px"}}>
       <p>{title}</p>
         <div class="row align-items-center"></div>
         <div>
@@ -211,8 +218,7 @@ return (
   const ButtonType1 = ({title, button1, button2, button3, button4, price}) => { 
    
     return (
-    <div class="row">
-      <p>{title}</p>
+    <div class="row" style={{marginTop: "80px"}}>
 
           <div class="row align-items-center">
             <div class="col-lg-6">
@@ -258,7 +264,7 @@ return (
      for (let name of row1Names) {
       row1.push(
         <div class="col-lg-4">
-          <MyCard title={name.type} price={name.price}/>
+          <MyCard title={name.type} price={name.price} image={name.image}/>
         </div>
         );
       }
@@ -266,7 +272,7 @@ return (
   for (let name of row2Names) {
     row2.push(
         <div class="col-lg-4">
-          <MyCard title={name.type} price={name.price}/>
+          <MyCard title={name.type} price={name.price} image={name.image}/>
         </div>
         );
       }

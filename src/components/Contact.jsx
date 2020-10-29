@@ -66,11 +66,11 @@ render() {
 let todoList = this.state.todoList || default_todoList;
 let itemsInList = todoList.length || 0;
 
-   const MyCard = ({i, foodType, glazing, quantity, total}) => {
+   const MyCard = ({i, foodType, glazing, quantity, total, image}) => {
     return (
       <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '18rem' }}>
       <div class="row">
-     <div class="col-lg-3"><Card.Img variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" style={{ height: '17.9rem', width: "18rem" }}/></div> 
+     <div class="col-lg-3"><Card.Img variant="top" src={image} style={{ height: '17.9rem', width: "18rem" }}/></div> 
       <div class="col-lg-6"><i>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</i></div> 
       <div class="col-lg-2"><i>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</i></div> 
 
@@ -98,7 +98,7 @@ let itemsInList = todoList.length || 0;
       <div class="row">  
         <div class="col-lg-1"></div>
             <div class="col-lg-10">
-              <MyCard i ={i} foodType={todo.foodType} glazing={todo.glazing} quantity={todo.quantity} total={todo.total}/>
+              <MyCard i ={i} foodType={todo.foodType} glazing={todo.glazing} quantity={todo.quantity} total={todo.total} image={todo.image}/>
             </div>
           </div>
 
