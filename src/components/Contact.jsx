@@ -14,101 +14,7 @@ function store(todoList){
   localStorage.setItem('todoList',JSON.stringify(todoList))
 }
 
-function Example({title}) {
-  const [show, setShow] = React.useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
-  return (
-    <div>
-      <Button onClick={handleShow} variant="light" size="lg" style={{backgroundColor: "white", color:"black", padding: 0}}><u>{title}</u></Button>
-
-      <Modal show={show} onHide={handleClose} animation={true}  size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered>
-        <Modal.Header closeButton style={{backgroundColor: "orange", color: "white", fontSize: "large"}}>
-          <Modal.Title>{title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-       
-      <div class="row">    
-        <div class="col-lg-7">
-        <Card.Img style={{ height: '28rem' }} variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" />
-        </div>
-
-        <div class="col-lg-5">
-
-        <div class="row">
-          <p>Glazing</p>
-   
-
-          <div class="row align-items-center">
-            <div class="col-lg-6">
-            
-              <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" onclick={<Example title={"alia"}/>} value="None" />
- 
-            </div>
-
-            <div class="col-lg-6">
-             <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" value="Vanilla-Milk" />{' '}
-            </div>
-            </div>
-
-          <div class="row my-2 align-items-center">
-         <div class="col-lg-6">
-              <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" value="Sugar-Milk" />
-            </div>
-
-            <div class="col-lg-6">
-             <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" value="Double" />{' '}
-            </div>
-          </div>
-          </div>
-
-  
-
-        <div class="row align-items-center my-4"> <p>Quantity</p>
-          <div class="row align-items-center">
-            <div class="col-lg-6">
-              <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" value="1" />
-            </div>
-
-            <div class="col-lg-6">
-             <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" value="2" />{' '}
-            </div>
-            </div>
-
-          <div class="row my-2 align-items-center">
-         <div class="col-lg-6">
-              <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" value="6" />
-            </div>
-
-            <div class="col-lg-6">
-             <Button as="input" size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} type="button" value="12" />{' '}
-            </div>
-          </div>  
-
- 
-
-          </div>
-
-        </div>
-   
-        </div>
-
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="link" style={{color: "black"}} onClick={handleClose}>
-            Continue Browsing
-          </Button>
-          <Button variant="outline-light" style={{color: "white", backgroundColor: "orange"}} onClick={handleClose}>
-            Add to Cart
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
-}
 
 let loaded_todoList = load()
 
@@ -147,6 +53,30 @@ class Contact extends Component {
 
 
 render() {
+
+
+
+
+   const MyCard = ({FoodType, Glazing, Quantity, Total}) => {
+    return (
+      <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '18rem' }}>
+      <div class="row align-items-center">  
+        
+          <div class="card-body">
+              <div class="row align-items-center">  
+                <div class="col-lg-4 align-items-center"><Card.Img variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" style={{ height: '16rem', width: "16rem" }}/></div>
+                <div class="col-lg-6 align-items-center"><Card.Text>
+                  <i>FoodType: {FoodType}</i><br></br>
+                  <i>Glazing: {Glazing}</i><br></br>
+                  <i>Quantity: {Quantity}</i><br></br>
+                  <i>Total: {Total}</i><br></br>
+                </Card.Text></div>
+          </div>
+                
+              </div>
+              </div>
+      </div>);
+  }
     console.log("rerender");
 
     let list_content = [];
@@ -162,6 +92,11 @@ render() {
           <button className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}>
             {"x"}
           </button>
+           <div class="row">  
+            <div class="col-lg-12">
+              <MyCard FoodType={todo.foodType} Glazing={todo.glazing} Quantity={todo.quantity} Total={todo.total}/>
+            </div>
+          </div>
         </li>
       );
       console.log(todo);
