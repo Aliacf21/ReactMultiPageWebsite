@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ReactMultiPageWebsite/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/ReactMultiPageWebsite/static/js/main.17b295f6.chunk.js",
-    "main.js.map": "/ReactMultiPageWebsite/static/js/main.17b295f6.chunk.js.map",
+    "main.css": "/ReactMultiPageWebsite/static/css/main.d63071f5.chunk.css",
+    "main.js": "/ReactMultiPageWebsite/static/js/main.aee69f7c.chunk.js",
+    "main.js.map": "/ReactMultiPageWebsite/static/js/main.aee69f7c.chunk.js.map",
     "runtime-main.js": "/ReactMultiPageWebsite/static/js/runtime-main.696fb67e.js",
     "runtime-main.js.map": "/ReactMultiPageWebsite/static/js/runtime-main.696fb67e.js.map",
     "static/css/2.3e575b9f.chunk.css": "/ReactMultiPageWebsite/static/css/2.3e575b9f.chunk.css",
-    "static/js/2.bef78e83.chunk.js": "/ReactMultiPageWebsite/static/js/2.bef78e83.chunk.js",
-    "static/js/2.bef78e83.chunk.js.map": "/ReactMultiPageWebsite/static/js/2.bef78e83.chunk.js.map",
+    "static/js/2.b4e9b349.chunk.js": "/ReactMultiPageWebsite/static/js/2.b4e9b349.chunk.js",
+    "static/js/2.b4e9b349.chunk.js.map": "/ReactMultiPageWebsite/static/js/2.b4e9b349.chunk.js.map",
     "index.html": "/ReactMultiPageWebsite/index.html",
-    "precache-manifest.8770c54cce7111eb6a8589fa5eecfb23.js": "/ReactMultiPageWebsite/precache-manifest.8770c54cce7111eb6a8589fa5eecfb23.js",
+    "precache-manifest.74695493c863bafcb9c826880556a2c6.js": "/ReactMultiPageWebsite/precache-manifest.74695493c863bafcb9c826880556a2c6.js",
     "service-worker.js": "/ReactMultiPageWebsite/service-worker.js",
     "static/css/2.3e575b9f.chunk.css.map": "/ReactMultiPageWebsite/static/css/2.3e575b9f.chunk.css.map",
-    "static/css/main.5ecd60fb.chunk.css.map": "/ReactMultiPageWebsite/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.bef78e83.chunk.js.LICENSE.txt": "/ReactMultiPageWebsite/static/js/2.bef78e83.chunk.js.LICENSE.txt"
+    "static/css/main.d63071f5.chunk.css.map": "/ReactMultiPageWebsite/static/css/main.d63071f5.chunk.css.map",
+    "static/js/2.b4e9b349.chunk.js.LICENSE.txt": "/ReactMultiPageWebsite/static/js/2.b4e9b349.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.696fb67e.js",
     "static/css/2.3e575b9f.chunk.css",
-    "static/js/2.bef78e83.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.17b295f6.chunk.js"
+    "static/js/2.b4e9b349.chunk.js",
+    "static/css/main.d63071f5.chunk.css",
+    "static/js/main.aee69f7c.chunk.js"
   ]
 }
