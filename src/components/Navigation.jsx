@@ -45,7 +45,7 @@ let itemsInList = todoList.length
             <ul class="navbar-nav ml-auto">
               <li
                 class={`nav-item  ${
-                  this.props.location.pathname === "/" ? "active" : ""
+                  this.props.location.pathname === "ReactMultiPageWebsite/" ? "active" : ""
                 }`}
               >
                 <Link class="nav-link" to="/" style={{color: "white"}}>
@@ -55,16 +55,16 @@ let itemsInList = todoList.length
               </li>
               <li
                 class={`nav-item  ${
-                  this.props.location.pathname === "/about" ? "active" : ""
+                  this.props.location.pathname === "ReactMultiPageWebsite/about" ? "active" : ""
                 }`}
               >
-                <Link  class="nav-link" to="/about" style={{color: "white"}}>
+                <Link  class="nav-link" to="ReactMultiPageWebsite/about" style={{color: "white"}}>
                   Products
                 </Link>
               </li>
               <li onClick= {() => window.location.reload(true)}
                 class={`nav-item  ${
-                  this.props.location.pathname === "/contact" ? "active" : ""
+                  this.props.location.pathname === "ReactMultiPageWebsite/contact" ? "active" : ""
                 }`}
               >
   
