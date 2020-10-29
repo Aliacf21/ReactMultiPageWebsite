@@ -17,68 +17,78 @@ function store(todoList){
   localStorage.setItem('todoList',JSON.stringify(todoList))
 }
 
-let loaded_todoList = load()
 
 class Navigation extends Component {
-     state = {
-    //Using || backup assignment
-    todoList: loaded_todoList || default_todoList,
-    newTodoContent: ""
 
+
+
+ componentDidMount() {
+    let loaded_todoList = load()
+     this.setState(
+    //Using || backup assignment
+    {todoList: loaded_todoList || default_todoList,
+    newTodoContent: ""
+    }
+  );
+  }
+
+  state = {
   };
+
+
+
+please = () => {
+
+  console.log("HERE" +  this.props.cartItemCount)
+}
+
 
 
 render () {
 
-let todoList = this.state.todoList;
-let itemsInList = todoList.length
 
+let todoList = this.state.todoList || default_todoList;
   return (
     <div className="navigation">
-      <nav class="navbar navbar-expand-lg" style={{backgroundColor: "orange", color: "white"}}>
-        <div class="container">
-          <Link class="navbar-brand" to="/" style={{color: "white"}}>
+      <nav className="navbar navbar-expand-lg" style={{backgroundColor: "orange", color: "white"}}>
+        <div className="container">
+          <Link className="navbar-brand" to="/" style={{color: "white"}}>
             Bun-Bun Bake Shop
           </Link>
 
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
+          <div className="collapse navbar-collapse" id="navbarResponsive">
+            <ul className="navbar-nav ml-auto">
               <li
-                class={`nav-item  ${
+                className={`nav-item  ${
                   this.props.location.pathname === "/ReactMultiPageWebsite" ? "active" : ""
                 }`}
               >
-                <Link class="nav-link" to="/ReactMultiPageWebsite" style={{color: "white"}}>
+                <Link className="nav-link" to="/ReactMultiPageWebsite" style={{color: "white"}}>
                   Home
-                  <span class="sr-only">(current)</span>
+                  <span className="sr-only">(current)</span>
                 </Link>
               </li>
               <li
-                class={`nav-item  ${
+                className={`nav-item  ${
                   this.props.location.pathname === "/ReactMultiPageWebsite/about" ? "active" : ""
                 }`}
               >
-                <Link  class="nav-link" to="/ReactMultiPageWebsite/about" style={{color: "white"}}>
+                <Link  className="nav-link" to="/ReactMultiPageWebsite/about" style={{color: "white"}}>
                   Products
                 </Link>
               </li>
-              <li onClick= {() => window.location.reload(true)}
-                class={`nav-item  ${
+              <li 
+                className={`nav-item  ${
                   this.props.location.pathname === "/ReactMultiPageWebsite/contact" ? "active" : ""
                 }`}
               >
   
-                <Link class="nav-link" to="/ReactMultiPageWebsite/contact" style={{color: "white"}}>
-                  Shopping Cart   <span class="dot" style={{textAlign:"center"}}>{itemsInList}</span>
+                <Link onClick={() => this.please()}className="nav-link" to="/ReactMultiPageWebsite/contact" style={{color: "white"}}>
+                  Shopping Cart <span className="dot" style={{textAlign:"center"}}>{this.props.cartItemCount}</span>
 
                 </Link>
  
-                
               </li>
-
-      
-
-          
 
 
             </ul>

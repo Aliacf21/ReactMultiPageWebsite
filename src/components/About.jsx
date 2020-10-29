@@ -21,12 +21,18 @@ let loaded_todoList = load()
 
 
 class About extends Component {
-   state = {
-    //Using || backup assignment
-    todoList: loaded_todoList || default_todoList,
-    newTodoContent: ""
+  state = {};
 
-  };
+  componentDidMount() {
+    let loaded_todoList = load()
+     this.setState(
+    //Using || backup assignment
+    {todoList: loaded_todoList || default_todoList,
+    newTodoContent: ""
+    }
+  );
+
+  }
 
    toggleDone = (evt, i) => {
     let todoList = this.state.todoList;
@@ -41,7 +47,10 @@ class About extends Component {
     todoList.push({foodType: foodType, glazing:myGlazing, quantity:quantity, total:myTotal})
     this.setState({ todoList: todoList });
     store(todoList)
-    window.location.reload(true);
+    //pass some call back as a prop 
+    this.props.increase()
+
+    
   };
   deleteItem = (event, i) => {
     //TODO 2: Make the delete button work (hint: event.stopPropagation())
@@ -55,12 +64,14 @@ class About extends Component {
 
 
 
+
+
   render() 
 
   {
 
-  let row1Names = ["Original", "Original; Gluten-Free", "Blackberry"];
-  let row2Names = ["Walnut", "Pecan", "Pumpkin Spice"];
+  let row1Names = [{type: "Original", price: 1}, {type: "Original; Gluten-Free", price: 2}, {type: "Blackberry", price: 1.5}];
+  let row2Names = [{type: "Walnut", price: 3}, {type: "Pecan", price: 2}, {type: "Pumpkin Spice", price: 1}];
   let row1 = [];
   let row2 = [];
 
@@ -113,19 +124,28 @@ class About extends Component {
   }
 
 
+  const openModal = ({myTitle, myPrice}) => {
+    console.log("Enter here")
+return (
+  <div class="col-lg-9 text-left">
+    <MyModal title ={myTitle} price={myPrice}/>
+  </div>);
+  }
 
   const MyCard = ({title, text, price, link}) => {
     return (
       <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '32rem' }}>
-        <Card.Img style={{ height: '24rem' }} variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" />
-          <div class="card-body">
-              <div class="row align-items-center">  
-                <div class="col-lg-10 align-items-center"><MyModal title ={title} price={price}/></div>
-                <div class="col-lg-2 align-items-center">  
-                  <Card.Title>${price}</Card.Title>
+        <Card.Img style={{ height: '24rem' }}  onClick= {() => openModal(title, price)} src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" />
+          <div class="card-body">   
+              <div class="row">  
+                <div class="col-lg-9 text-left">
+                  <MyModal title ={title} price={price}/>
                 </div>
-       
+                <div class="col-lg-3 text-right">  
+                  <Card.Title style={{marginTop: "5px"}}>${price}</Card.Title>
+                </div>
               </div>
+
                 <Card.Text>
                   <i>Made with {title} and fluffy dough</i>
                 </Card.Text>
@@ -236,9 +256,9 @@ class About extends Component {
     
 
      for (let name of row1Names) {
-    row1.push(
+      row1.push(
         <div class="col-lg-4">
-          <MyCard title={name} price={"1"}/>
+          <MyCard title={name.type} price={name.price}/>
         </div>
         );
       }
@@ -246,7 +266,7 @@ class About extends Component {
   for (let name of row2Names) {
     row2.push(
         <div class="col-lg-4">
-          <MyCard title={name} price={"1"}/>
+          <MyCard title={name.type} price={name.price}/>
         </div>
         );
       }

@@ -16,15 +16,23 @@ function store(todoList){
 
 
 
-let loaded_todoList = load()
-
-
 class Contact extends Component {
+ 
+ 
   state = {
-    //Using || backup assignment
-    todoList: loaded_todoList || default_todoList,
-    newTodoContent: ""
   };
+
+
+ componentDidMount() {
+    let loaded_todoList = load()
+     this.setState(
+    //Using || backup assignment
+    {todoList: loaded_todoList || default_todoList,
+    newTodoContent: ""
+    }
+  );
+  }
+
 
    toggleDone = (evt, i) => {
     let todoList = this.state.todoList;
@@ -46,7 +54,7 @@ class Contact extends Component {
     todoList.splice(i,1)
     this.setState({ todoList: todoList });
     store(todoList)
-    window.location.reload(true);
+    this.props.decrease()
   };
 
 
@@ -55,60 +63,59 @@ class Contact extends Component {
 render() {
 
 
+let todoList = this.state.todoList || default_todoList;
+let itemsInList = todoList.length || 0;
 
-
-   const MyCard = ({FoodType, Glazing, Quantity, Total}) => {
+   const MyCard = ({i, foodType, glazing, quantity, total}) => {
     return (
       <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '18rem' }}>
-      <div class="row align-items-center">  
-        
-          <div class="card-body">
-              <div class="row align-items-center">  
-                <div class="col-lg-4 align-items-center"><Card.Img variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" style={{ height: '16rem', width: "16rem" }}/></div>
-                <div class="col-lg-6 align-items-center"><Card.Text>
-                  <i>FoodType: {FoodType}</i><br></br>
-                  <i>Glazing: {Glazing}</i><br></br>
-                  <i>Quantity: {Quantity}</i><br></br>
-                  <i>Total: {Total}</i><br></br>
-                </Card.Text></div>
-          </div>
-                
-              </div>
-              </div>
+      <div class="row">
+     <div class="col-lg-3"><Card.Img variant="top" src="https://www.cookingclassy.com/wp-content/uploads/2012/12/45+minute+cinnamon+rolls9.jpg" style={{ height: '17.9rem', width: "18rem" }}/></div> 
+      <div class="col-lg-6"><i>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</i></div> 
+      <div class="col-lg-2"><i>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</i></div> 
+
+      </div>
+             <button className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}>{"Edit"}</button>
+   
       </div>);
   }
     console.log("rerender");
 
     let list_content = [];
+     if (this.state.todoList != undefined){
     for (let i = 0; i < this.state.todoList.length; i++) {
       let todo = this.state.todoList[i];
       list_content.push(
-        <li>
-          FoodType: {todo.foodType} <br></br>
-          Glazing: {todo.glazing} <br></br>
-          Quantity: {todo.quantity} <br></br>
-          Total: {todo.total} <br></br>
-          <div className="Filler"></div>
-          <button className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}>
-            {"x"}
-          </button>
-           <div class="row">  
-            <div class="col-lg-12">
-              <MyCard FoodType={todo.foodType} Glazing={todo.glazing} Quantity={todo.quantity} Total={todo.total}/>
+        <div>
+
+   <div class="row my-0">
+    <div class="col-lg-1"></div>
+     <div class="col-lg-6"><h5>Checkout Item</h5></div> 
+      <div class="col-lg-3"><h5>Quantity</h5></div> 
+       <div class="col-lg-2"><h5>Price</h5></div> 
+   </div>
+
+      <div class="row">  
+        <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+              <MyCard i ={i} foodType={todo.foodType} glazing={todo.glazing} quantity={todo.quantity} total={todo.total}/>
             </div>
           </div>
-        </li>
+
+             <div class="col-lg-1"></div>
+        </div>
+
       );
       console.log(todo);
       }
+    }
       
 
     return (
       <div className="App">
         <div className="Header">
-          <h5>Checkout Items</h5>
         </div>
-        <ul>{list_content}</ul>
+        {list_content}
       </div>
     );
   }
