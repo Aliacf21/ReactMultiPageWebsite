@@ -9,9 +9,9 @@ function App() {
       <Router>
         <Navigation />
         <Switch>
-          <Route path="aliacf21.github.io/ReactMultiPageWebsite/" exact component={() => <Home />} />
-          <Route path="aliacf21.github.io/ReactMultiPageWebsite/about" exact component={() => <About />} />
-          <Route path="aliacf21.github.io/ReactMultiPageWebsite/contact" exact component={() => <Contact />} />
+          <Route path="ReactMultiPageWebsite/" exact component={() => <Home />} />
+          <Route path="ReactMultiPageWebsite/about" exact component={() => <About />} />
+          <Route path="ReactMultiPageWebsite/contact" exact component={() => <Contact />} />
         </Switch>
       </Router>
     </div>
