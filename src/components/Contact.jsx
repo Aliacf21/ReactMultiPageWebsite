@@ -91,13 +91,17 @@ let itemsInList = todoList.length || 0;
     )}
 
 
-  const ProductDescription = ({foodType, glazing, i}) => {return(
+  const ProductDescription = ({foodType, glazing, i}) => {
+
+    let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
+    if (foodType == "Original; Gluten-Free") { description = "Lorem ipsum dolor sit amet, consectetur adipiscing." }
+    return(
     <div>
       <div>
           <br></br>
           <b>{foodType}</b><br></br>
           Glazing: {glazing}<br></br><br></br>
-          <i>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</i>
+          <i>Description:{description}</i>
           <br></br>
           <br></br>
           <button style={{marginRight: "0px", backgroundColor: "white", border: "none"}} className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}><u>{"Remove"}</u></button>
