@@ -3,6 +3,7 @@ import { Card, Button, Modal, ButtonGroup, ToggleButtonGroup, ToggleButton } fro
 
 
 
+
  const default_todoList = [
 ];
 
@@ -97,7 +98,7 @@ class About extends Component {
 
     return (
       <div>
-        <Button onClick={handleShow} variant="light" size="lg" style={{backgroundColor: "white", color:"black", padding: 0, textDecoration: "none"}}><u>{title}</u></Button> 
+        <Button class="titleButtons" onClick={handleShow} variant="light" size="lg" style={{backgroundColor: "white", color:"black", paddingLeft: 0,  border: "none"}}><u>{title}</u></Button> 
 
          <Modal show={show} onHide={handleClose} backdrop="static"  animation={true}  size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
            <Modal.Header closeButton style={{backgroundColor: "orange", color: "white", fontSize: "large"}}>
@@ -187,22 +188,22 @@ return (
 
           <div class="row align-items-center">
             <div class="col-lg-6">
-              <Button onClick={() => updateValue(button1)} size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} value={button1}>{button1}</Button>
+              <Button onClick={() => updateValue(button1)} size="sm" variant="light" style={{width: "9rem", backgroundColor:"#FEBA4F", color:"white"}} value={button1}>{button1}</Button>
 
             </div>
 
             <div class="col-lg-6">
-              <Button onClick={() => updateValue(button2)}  size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} value={button2}>{button2}</Button>
+              <Button onClick={() => updateValue(button2)}  size="sm" variant="light" style={{width: "9rem", backgroundColor:"#FEBA4F", color:"white"}} value={button2}>{button2}</Button>
             </div>
           </div>
          
           <div class="row my-2 align-items-center">
               <div class="col-lg-6">
-                <Button onClick={() => updateValue(button3)}  size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} value={button3}>{button3}</Button>
+                <Button onClick={() => updateValue(button3)}  size="sm" variant="light" style={{width: "9rem", backgroundColor:"#FEBA4F", color:"white"}} value={button3}>{button3}</Button>
               </div>
 
             <div class="col-lg-6">
-                <Button onClick={() => updateValue(button4)} size="sm" variant="light" style={{width: "9rem", backgroundColor:"orange", color:"white"}} value={button4}>{button4}</Button>
+                <Button onClick={() => updateValue(button4)} size="sm" variant="light" style={{width: "9rem", backgroundColor:"#FEBA4F", color:"white"}} value={button4}>{button4}</Button>
             </div>
           </div>
 
@@ -222,33 +223,33 @@ return (
 
           <div class="row align-items-center">
             <div class="col-lg-6">
-              <Button size="sm" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "left"}}>Glazing</Button>
+              <Button size="sm" variant="light" style={{border: "none", width: "9rem", backgroundColor:"white", color:"black", textAlign: "left"}}>Glazing</Button>
 
             </div>
 
             <div class="col-lg-6">
-              <Button   size="sm" id="currentGlaze" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={customerChoiceForGlazing}>{customerChoiceForGlazing}</Button>
+              <Button   size="sm" id="currentGlaze" variant="light" style={{border: "none", width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={customerChoiceForGlazing}>{customerChoiceForGlazing}</Button>
             </div>
           </div>
          
           <div class="row my-2 align-items-center">
               <div class="col-lg-6">
-                <Button  size="sm" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "left"}}>Quantity</Button>
+                <Button  size="sm" variant="light" style={{border: "none", width: "9rem", backgroundColor:"white", color:"black", textAlign: "left"}}>Quantity</Button>
               </div>
 
             <div class="col-lg-6">
-                <Button  size="sm" id="currentQuatity" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={customerChoiceForQuantity}>x{customerChoiceForQuantity}</Button>
+                <Button  size="sm" id="currentQuatity" variant="light" style={{border: "none", width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={customerChoiceForQuantity}>x{customerChoiceForQuantity}</Button>
             </div>
           </div>
 
 
            <div class="row my-2 align-items-center">
               <div class="col-lg-6">
-                <Button  size="sm" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "left"}}>Total</Button>
+                <Button  size="sm" variant="light" style={{fontSize: "22px", border: "none", width: "9rem", backgroundColor:"white", color:"black", textAlign: "left"}}>Total</Button>
               </div>
 
             <div class="col-lg-6">
-                <Button  size="sm" id="currentTotal" variant="light" style={{width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={price}>${price}</Button>
+                <Button  size="sm" id="currentTotal" variant="light" style={{fontSize: "22px", border: "none", width: "9rem", backgroundColor:"white", color:"black", textAlign: "right"}} value={price}>${price}</Button>
             </div>
           </div>
 
@@ -287,7 +288,7 @@ return (
     console.log(this.state.todoList)
 
   return (
-    <div className="about">
+    <div className="products">
       <div class="container">
          <div className="contact">
 

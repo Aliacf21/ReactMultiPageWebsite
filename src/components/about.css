@@ -1,0 +1,8 @@
+#titleButtons{
+	color: red;
+	backgrounColor: white;
+}
+
+#titleButtons.hover{
+	color: red;
+}

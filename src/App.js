@@ -8,7 +8,7 @@ function load(){
   let count = localStorage.getItem('count')
   //Using && to condition on str_todos else null
   if (count < 0) {
-    localStorage.setItem('count',JSON.stringify(0))
+    store(0)
   }
   return (count && JSON.parse(count)) 
 }
