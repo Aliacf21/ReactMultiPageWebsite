@@ -1,18 +1,21 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Navigation, Footer, Home, About, Contact } from "./components";
+import { Navigation, Home, About, Contact } from "./components";
 
+//Default count for shopping cart 
 const default_count = 0
 
+
+//Load count from local storage
 function load(){
   let count = localStorage.getItem('count')
-  //Using && to condition on str_todos else null
   if (count < 0) {
     store(0)
   }
   return (count && JSON.parse(count)) 
 }
 
+//store count from local storage
 function store(count){
   localStorage.setItem('count',JSON.stringify(count))
 }
@@ -26,9 +29,10 @@ class App extends Component {
   };
 
 
-
+//Function which increases count
 incrementCount = () => {
   load_count = load_count + 1;
+  //Store updated count in local storage
   store(load_count)
   console.log("There" + this.state.count)
   this.setState((state) => {
@@ -37,8 +41,10 @@ incrementCount = () => {
 
 }
 
+//Function which decreases count
 decrementCount = () => {
   load_count = load_count-1;
+  //Store updated count in local storage
   store(load_count)
   if (this.state.count == 0) {return }
   if (this.state.count < 0) { 
@@ -51,11 +57,8 @@ decrementCount = () => {
   });
 }
 
-
-//this.incrementCount();
-
+//Route to the different pages
 render() {
-
   return (
     <div className="App">
       <Router>

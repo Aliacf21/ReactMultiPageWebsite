@@ -4,15 +4,8 @@ import { Card, Button, Modal, ButtonGroup, ToggleButtonGroup, ToggleButton } fro
 import "./nav.css";
 
 
-
-
 class Navigation extends Component {
-
-
-
 render () {
-
-
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand-lg" style={{backgroundColor: "orange", color: "white", height: "4rem"}}>
@@ -54,7 +47,6 @@ render () {
                 </Link>
  
               </li>
-
 
             </ul>
           </div>

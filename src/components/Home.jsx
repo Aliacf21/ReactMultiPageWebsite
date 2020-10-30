@@ -2,6 +2,8 @@ import React from "react";
 import { Carousel, Button, Modal } from "react-bootstrap";
 
 function Home() {
+
+  //Create a caresoual and about me section
   return (
     <div className="home">
       <div class="container">
@@ -17,7 +19,6 @@ function Home() {
                   style={{ height: '36rem'}}
                 />
 
-               
               </Carousel.Item>
               <Carousel.Item interval={2000}>
                 <img
