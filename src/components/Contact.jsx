@@ -46,18 +46,30 @@ render() {
 
 let todoList = this.state.todoList || default_todoList;
 let itemsInList = todoList.length || 0;
+let buttonCount = 0
 
 
   //Drop down Component
   const MyDropDowns = ({activeQuantity}) => { 
     let quantityValues = [1, 2, 6, 12]
     let buttonArray = []
+
+
+
+    const change = (x) => {
+      activeQuantity = x
+      console.log(document.getElementById(x).parentNode);
+     
+    }
+
+
+
     for (let index in quantityValues) {
     //Make the active dropdown button the current chosen dropdown 
-    if (quantityValues[index] == activeQuantity) { buttonArray.push( <Dropdown.Item eventKey="quantityValues[index]" active>{quantityValues[index]}</Dropdown.Item>)}
+    if (quantityValues[index] == activeQuantity) { buttonArray.push( <Dropdown.Item id={index} eventKey="quantityValues[index]" onClick={() => change(quantityValues[index])} active>{quantityValues[index]}</Dropdown.Item>)}
     else {
       buttonArray.push(
-        <Dropdown.Item id="Sometest" eventKey="quantityValues[index]">{quantityValues[index]}</Dropdown.Item>
+        <Dropdown.Item id={index} eventKey="quantityValues[index]" onClick={() => change(quantityValues[index])}>{quantityValues[index]}</Dropdown.Item>
         )
       }
     }
@@ -68,25 +80,27 @@ let itemsInList = todoList.length || 0;
       <Dropdown.Menu a>
         {buttonArray}
       </Dropdown.Menu>
+
   </Dropdown>
     )}
 
 
-  const ProductDescription = ({foodType, glazing, i}) => {
-    let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
-    if (foodType == "Original; Gluten-Free") { description = "Lorem ipsum dolor sit amet, consectetur adipiscing." }
+  const ProductDescription = ({foodType, glazing, i, quantity}) => {
+    let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    if (foodType == "Original; Gluten-Free") { description = "Lorem ipsum dolor sit amet." }
     return(
     <div>
       <div>
           <br></br>
           <b>{foodType}</b><br></br>
-          Glazing: {glazing}<br></br><br></br>
+          Glazing: {glazing}<br></br>
+          Quantity: {quantity}<br></br><br></br>
           <i>Description:{description}</i>
           <br></br>
           <br></br>
           <button style={{marginRight: "0px", backgroundColor: "white", border: "none"}} className="DeleteIcon" onClick={(e) => this.deleteItem(e,i)}><u>{"Remove"}</u></button>
-          <button style={{backgroundColor: "white", border: "none"}} onClick={(e) => this.deleteItem(e,{i})}>|</button>
-          <button style={{backgroundColor: "white", border: "none"}} onClick={(e) => this.deleteItem(e,{i})}><u>{"Edit"}</u></button>
+       
+          
       </div> 
 
     </div>)}
@@ -98,14 +112,14 @@ let itemsInList = todoList.length || 0;
         <div class="shadow card border-dark mb-3 rounded-0" style={{ height: '18rem'}}>
         <div class="row">
           <div class="col-lg-5"><Card.Img variant="top" src={image} style={{ height: '17.9rem', width: "18rem" }}/></div> 
-          <div class="col-lg-3">
-            <ProductDescription foodType={foodType} glazing={glazing} i={i}/>
+          <div class="col-lg-4">
+            <ProductDescription foodType={foodType} glazing={glazing} i={i} quantity={quantity}/>
           </div>  
-          <div class="col-lg-1"></div>
+
           <div class="col-lg-2">  
-            <br></br>
-            Quantity <br></br>
-            <MyDropDowns activeQuantity={quantity}/>
+            <br></br><br></br><br></br>
+
+
             <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
           <Button style={{width: "120px", fontSize: "20px", textAlign: "right", backgroundColor: "white", color: "black", border: "none", borderRadius: "2px"}}>${total}</Button>
           </div>
